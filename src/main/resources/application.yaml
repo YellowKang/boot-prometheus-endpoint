@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: @artifactId@
+    env: ${spring.profiles.active}
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - 'prometheus'
+          - 'info'
+          - 'health'
+      base-path: /actuator
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      env: ${spring.profiles.active}
